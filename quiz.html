@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LovePoints Quiz</title>
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="card">
+            <div id="question" class="question"></div>
+            <div id="options" class="options">
+                <div class="option" onclick="selectOption(0)"></div>
+                <div class="option" onclick="selectOption(1)"></div>
+                <div class="option" onclick="selectOption(2)"></div>
+                <div class="option" onclick="selectOption(3)"></div>
+            </div>
+            <button class="next-button" onclick="nextQuestion()">Próxima Pergunta</button>
+        </div>
+        <a class="voltar" href="./como.html">Voltar</a>
+    </div>
+    <script src="./scripts/quiz.js"></script>
+</body>
+</html>

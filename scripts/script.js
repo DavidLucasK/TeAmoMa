@@ -7,10 +7,7 @@ function typeWriter(elemento, texto, callback) {
         }, 50 * i);
     });
 
-    // Tempo total necessário para escrever o texto
     const tempoTotal = 100 * textoArray.length;
-
-    // Chamar a função de callback após o tempo necessário para escrever o texto, mais um pequeno delay
     setTimeout(() => {
         if (callback) callback();
     }, tempoTotal + 10);
@@ -18,7 +15,6 @@ function typeWriter(elemento, texto, callback) {
 
 const parags = document.querySelectorAll('.home .typewriter');
 
-// Arrays de textos para primeira e subsequentes visitas
 const textos1 = [
     'Oi gatinha!',
     'Essa plataforma foi uma idéia que tive.',
@@ -27,29 +23,46 @@ const textos1 = [
 
 const textos2 = [
     'Oi de novo!',
-    'Espero que esteja gostando.',
+    'Espero que esteja gostando amor.',
     'Lembre-se sempre: Eu te amo',
 ];
 
 const textos3 = [
-    'Oiieee!',
-    'Estou feliz que você esteja aqui.',
-    'Quantos pontos você já tem?',
+    'Bem-vinda novamente gatinha!',
+    'Estou feliz que você esteja usando o site hehe.',
+    'Tem alguma sugestão pra loja? Me chama!'
 ];
 
-const textos4 = [
-    'Bem-vinda novamente!',
-    'Estou feliz que você esteja aqui.',
-    'Tem alguma sugestão pra loja? Só me avisar!'
-];
 
-// Verifica se o usuário já visitou a página
+function obterTextos4(lovePoints) {
+    if (lovePoints > 1000) {
+        return [
+            'Oiieee!',
+            'Que bom que você está aqui de novo.',
+            'UAU! Você já tem mais de 1000 LovePoints? Parabéns',
+        ];
+    } else {
+        return [
+            'Oiieee!',
+            'Que bom que você está aqui de novo.',
+            'Quantos pontos você já tem?',
+        ];
+    }
+}
+
 const hasVisited = localStorage.getItem('hasVisited');
 
-// Escolhe o array de textos com base na visita anterior
+// Recupera os pontos armazenados e adiciona à variável lovePoints
+
+//Variavel que pega os LovePoints do LocalStorage
+const storedLovePoints = localStorage.getItem('lovePoints') ? parseInt(localStorage.getItem('lovePoints')) : 0;
+//Adiciona aos LovePoints reais da página
+const lovePoints = 500 + storedLovePoints;
+const points = document.querySelector('.points');
+points.innerHTML = `${lovePoints} LovePoints`;
+
 let textos;
 if (hasVisited) {
-    // Gera um número aleatório entre 0 e 3
     const randomIndex = Math.floor(Math.random() * 4);
     switch (randomIndex) {
         case 0:
@@ -59,7 +72,7 @@ if (hasVisited) {
             textos = textos3;
             break;
         case 2:
-            textos = textos4;
+            textos = obterTextos4(lovePoints); // Chama a função com lovePoints
             break;
         default:
             textos = textos2;
@@ -83,18 +96,10 @@ function startTypingEffect() {
     typeNextParagraph();
 }
 
-// Armazena a informação de visita no localStorage
 localStorage.setItem('hasVisited', true);
 
 startTypingEffect();
 
-const lovePoints = 2000;
-
-const points = document.querySelector('.points');
-
-points.innerHTML = `${lovePoints} LovePoints`;
-
-//Mostra a loja depois de um certo tempo
 window.onload = function() {
     const loja = document.getElementById('link');
     const lojaNav = document.getElementById('lojaNav');
@@ -113,26 +118,22 @@ window.onload = function() {
     }
 }
 
-//Profile Scripts
 
-// script.js
+//Função para mudar a foto de perfil
 document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('fileInput');
     const profileImage = document.getElementById('profileImage');
     const changePhotoButton = document.getElementById('changePhotoButton');
 
-    // Carregar imagem salva do localStorage se existir
     const savedImage = localStorage.getItem('profileImage');
     if (savedImage) {
         profileImage.src = savedImage;
     }
 
-    // Quando o botão é clicado, aciona o input de arquivo
     changePhotoButton.addEventListener('click', () => {
         fileInput.click();
     });
 
-    // Quando o usuário escolhe um arquivo, atualiza a imagem de perfil e salva no localStorage
     fileInput.addEventListener('change', () => {
         const file = fileInput.files[0];
         if (file) {
@@ -140,13 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             reader.onload = function(e) {
                 const imageDataUrl = e.target.result;
-                profileImage.src = imageDataUrl; // Atualiza a src da imagem com o resultado da leitura
-
-                // Salva a URL da imagem no localStorage
+                profileImage.src = imageDataUrl;
                 localStorage.setItem('profileImage', imageDataUrl);
             };
 
-            reader.readAsDataURL(file); // Lê o arquivo como uma URL de dados
+            reader.readAsDataURL(file);
         }
     });
 });

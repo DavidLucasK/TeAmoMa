@@ -1,4 +1,4 @@
-let questions = [
+const questions = [
     {
         question: "Qual meu jogo preferido?",
         options: ["Super Mario 64", "Valorant", "Chrono Trigger", "Grand Chase"],
@@ -27,13 +27,13 @@ let questions = [
 ];
 
 // Embaralha as perguntas
-questions = questions.sort(() => Math.random() - 0.5);
+const shuffledQuestions = questions.sort(() => Math.random() - 0.5);
 
 let currentQuestionIndex = 0;
 let lovePoints = 0;
 
 function loadQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = shuffledQuestions[currentQuestionIndex];
     document.getElementById('question').innerText = currentQuestion.question;
     const options = document.querySelectorAll('.option');
     options.forEach((option, index) => {
@@ -43,7 +43,7 @@ function loadQuestion() {
 }
 
 function selectOption(index) {
-    const currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = shuffledQuestions[currentQuestionIndex];
     const options = document.querySelectorAll('.option');
     options.forEach((option, optionIndex) => {
         if (optionIndex === currentQuestion.correct) {
@@ -59,12 +59,15 @@ function selectOption(index) {
 
 function nextQuestion() {
     currentQuestionIndex++;
-    if (currentQuestionIndex >= questions.length) {
+    if (currentQuestionIndex >= shuffledQuestions.length) {
         alert(`Quiz finalizado! Você ganhou ${lovePoints} LovePoints!`);
         
         // Adiciona os pontos ao localStorage
         const storedPoints = localStorage.getItem('lovePoints') ? parseInt(localStorage.getItem('lovePoints')) : 0;
         localStorage.setItem('lovePoints', storedPoints + lovePoints);
+        
+        // Define a flag indicando que o quiz foi completado
+        localStorage.setItem('quizCompleted', 'true');
         
         window.location.href = "loja.html";
     } else {
@@ -72,4 +75,25 @@ function nextQuestion() {
     }
 }
 
-window.onload = loadQuestion;
+function checkQuizStatus() {
+    const quizCompleted = localStorage.getItem('quizCompleted');
+    const question = document.getElementById('question');
+    const options = document.querySelectorAll('.option');
+    const button = document.getElementById('next-button');
+    const voltar = document.getElementById('voltar');
+    if (quizCompleted === 'true') {
+        question.innerHTML = 'Não há mais perguntas hoje, volte amanhã!';
+        options.forEach(option => {
+            option.style.display = 'none';
+        });
+        button.innerHTML = 'Voltar';
+        button.onclick = () => {
+            window.location.href = 'como.html';
+        }
+        voltar.style.display = 'none';
+    } else {
+        loadQuestion();
+    }
+}
+
+window.onload = checkQuizStatus;

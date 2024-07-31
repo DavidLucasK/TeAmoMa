@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 10;
+  animation: gradient 10s ease infinite;
+  background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
+  background-size: 100% 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo h1 {
+  margin: 0;
+  margin-left: 20px;
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+
+.logo h1:hover {
+  opacity: 0.8;
+}
+
+.profile-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+main {
+  padding: 20px;
+  background-color: white;
+}
+
+.points-section {
+  margin-top: 100px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.points-section h2 {
+  color: #000;
+  margin-bottom: -30px;
+}
+
+.points {
+  position: relative;
+  font-size: 2em;
+  font-weight: bold;
+  background-color: #e41d69;
+  color: white;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.445);
+}
+
+.how {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  margin-top: -20px;
+}
+
+.redeem-button {
+  background-color: #e41d69;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.redeem-button:hover {
+  background-color: rgb(209, 27, 97)
+}
+
+.store-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.store-section h2 {
+  color: #fff;
+}
+
+.item {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.item h3 {
+  margin-top: 0;
+}
+
+.profile-icon {
+  margin-right: 20px;
+}
+
+.profile-icon img {
+  filter: invert();
+  opacity: 0.8;
+  transition: 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.profile-icon img:hover {
+  opacity: 0.8;
+}
+
+::-webkit-scrollbar {
+  width: 10px; /* Largura da scrollbar */
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Cor de fundo da scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* Cor do indicador da scrollbar */
+  border-radius: 5px; /* Borda arredondada do indicador */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Cor do indicador da scrollbar ao passar o mouse */
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 480px) {
+  header {
+    background: linear-gradient(90deg, #e41d69, #ff7070, #fe8277, #ff7070, #e41d69) no-repeat;
+    z-index: 10;
+    animation: gradient 10s ease infinite;
+    background-size: 200% 200%;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+  }
+
+  main {
+    background-color: white;
+  }
+
+  .item {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
+  }
+}

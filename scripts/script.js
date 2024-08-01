@@ -122,21 +122,18 @@ localStorage.setItem('hasVisited', true);
 startTypingEffect();
 
 window.onload = function() {
-    const loja = document.getElementById('link');
-    const lojaNav = document.getElementById('lojaNav');
+    const lojaNavNone = document.getElementById('lojaNavNone');
     const profile = document.getElementById('profile');
-    loja.style.display = 'none';
     if (hasVisited) {
-        lojaNav.style.display= 'block';    
+        lojaNavNone.style.display= 'block';    
         profile.style.display= 'block';    
-        loja.style.display = 'none';
     }
     else {
-        lojaNav.style.display= 'none';
+        setTimeout(function() {
+            lojaNavNone.classList.remove('lojaNavNone');
+            lojaNavNone.classList.add('lojaNav');
+        }, 4000);
         profile.style.display= 'none';
-        setTimeout(() => {
-            loja.style.display = 'block';
-        }, 8000);
     }
 }
 

@@ -84,6 +84,14 @@ a {
     color: #fff;
 }
 
+.lojaNavNone {
+    display: none;
+}
+
+.lojaNav {
+    display: block;
+}
+
 .images-home img {
     position: fixed;
     bottom: 0;

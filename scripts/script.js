@@ -125,6 +125,7 @@ window.onload = function() {
     const loja = document.getElementById('link');
     const lojaNav = document.getElementById('lojaNav');
     const profile = document.getElementById('profile');
+    loja.style.display = 'none';
     if (hasVisited) {
         lojaNav.style.display= 'block';    
         profile.style.display= 'block';    

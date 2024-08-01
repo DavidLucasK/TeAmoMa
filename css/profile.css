@@ -114,6 +114,10 @@ main {
     opacity: 0.8;
 }
 
+.fileInput {
+    display: none;
+}
+
 #changePhotoButton {
     margin-top: 20px;
     padding: 10px 20px;

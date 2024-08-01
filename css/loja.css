@@ -165,13 +165,17 @@ main {
   }
 }
 
-@media only screen and (min-width: 200px) and (max-width: 480px) {
+@media only screen and (min-width: 300px) and (max-width: 480px) {
   header {
     background: linear-gradient(90deg, #e41d69, #ff7070, #fe8277, #ff7070, #e41d69) no-repeat;
     z-index: 10;
-    animation: gradient 10s ease infinite;
-    background-size: 200% 200%;
+    height: 100px;
     box-shadow: 0 0 10px rgb(0, 0, 0);
+  }
+
+  .logo h1 {
+    font-size: 24px;
+    margin-left: 25px;
   }
 
   main {
@@ -180,5 +184,14 @@ main {
 
   .item {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
+  }
+
+  .profile-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .points {
+    font-size: 30px;
   }
 }

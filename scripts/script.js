@@ -50,6 +50,60 @@ function obterTextos4(lovePoints) {
     }
 }
 
+async function showAlert() {
+    const result = await Swal.fire({
+        title: "Essa é a Lojinha",
+        text: `Aqui você pode trocar seus LovePoints por prêmios`,
+        confirmButtonText: "❤",
+        customClass: {
+            container: 'custom-swal-container',
+            title: 'custom-swal-title',
+            content: 'custom-swal-content',
+            confirmButton: 'custom-swal-confirm-button'
+        }
+    });
+
+    return result;
+}
+
+const hasVisitedLoja = true;
+
+window.onload = async function() {
+    // Verifica a URL da página atual
+    const path = window.location.pathname;
+
+    if (path === '/loja.html') {
+
+        if (!hasVisitedLoja) 
+        {
+            Swal.fire({
+                title: 'Bem-vindo à Loja!',
+                text: 'Esta é sua primeira visita à nossa loja.',
+                icon: 'info',
+                confirmButtonText: 'Ok'
+            }).then(() => {
+                localStorage.setItem('hasVisitedLoja', 'true');
+            });
+
+            hasVisitedLoja = true;
+
+            return hasVisitedLoja;
+        }
+        else 
+        {
+            const hasVisitedLoja = true
+            return hasVisitedLoja;
+        }
+
+    }
+
+    if (path === '/index.html') {
+        localStorage.setItem('hasVisited', 'true');
+    }
+
+    return hasVisitedLoja;
+};
+
 const hasVisited = localStorage.getItem('hasVisited');
 
 // Recupera os pontos armazenados e adiciona à variável lovePoints
@@ -120,23 +174,6 @@ function startTypingEffect() {
 localStorage.setItem('hasVisited', true);
 
 startTypingEffect();
-
-window.onload = function() {
-    const lojaNavNone = document.getElementById('lojaNavNone');
-    const profile = document.getElementById('profile');
-    if (hasVisited) {
-        lojaNavNone.style.display= 'block';    
-        profile.style.display= 'block';    
-    }
-    else {
-        setTimeout(function() {
-            lojaNavNone.classList.remove('lojaNavNone');
-            lojaNavNone.classList.add('lojaNav');
-        }, 4000);
-        profile.style.display= 'none';
-    }
-}
-
 
 //Função para mudar a foto de perfil
 document.addEventListener('DOMContentLoaded', () => {

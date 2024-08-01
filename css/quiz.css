@@ -11,6 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .quiz-container {
@@ -29,6 +30,7 @@ body {
   max-width: 600px;
   padding: 20px;
   text-align: center;
+  margin: 10px;
 }
 
 .question {
@@ -82,12 +84,19 @@ body {
 }
 
 .voltar {
-    padding: 30px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    text-decoration: none;
-    color: #fff;
+  padding: 10px;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #e41d69;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.voltar:hover {
+  background-color: #d11b61;
 }
 
 /* Customização do estilo do SweetAlert2 */
@@ -107,4 +116,106 @@ body {
 
 .custom-swal-confirm-button:hover {
   background-color: #d11b61; /* Cor do botão */
+}
+
+/* Media Queries */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .card {
+    width: 80%;
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .question {
+    font-size: 22px;
+  }
+
+  .option {
+    padding: 8px;
+  }
+
+  .next-button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+
+  .voltar {
+    padding: 5px;
+  }
+}
+
+
+/* iPads, tablets (481px - 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .card {
+    width: 80%;
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .question {
+    font-size: 22px;
+  }
+
+  .option {
+    padding: 8px;
+  }
+
+  .next-button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+
+}
+
+/* Telas pequenas, laptops (769px - 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    width: 70%;
+    padding: 18px;
+    margin: 10px;
+  }
+
+  .question {
+    font-size: 24px;
+  }
+
+  .option {
+    padding: 9px;
+  }
+
+  .next-button {
+    padding: 9px 18px;
+    font-size: 1em;
+  }
+
+  .voltar {
+    background-color: none;
+  }
+}
+
+/* Desktops, telas grandes (1025px - 1200px) */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .card {
+    width: 60%;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .question {
+    font-size: 26px;
+  }
+
+  .option {
+    padding: 10px;
+  }
+
+  .next-button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+  }
+
+  .voltar {
+    background-color: none;
+  }
 }

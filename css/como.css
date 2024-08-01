@@ -4,127 +4,227 @@
   font-family: "Poppins", sans-serif;
 }
 
-
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
 }
 
 header {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    z-index: 10;
-    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 10;
+  background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo h1 {
-    margin: 0;
-    margin-left: 20px;
-    color: white;
-    transition: 0.3s ease-in-out;
+  margin: 0;
+  margin-left: 20px;
+  color: white;
+  transition: 0.3s ease-in-out;
 }
 
 .logo h1:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .profile-icon {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .profile-icon img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    filter: invert();
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  filter: invert();
 }
 
 .profile-icon .profile {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .home {
-    position: fixed;
-    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
-    color: #fff;
-    width: 100vw;
+  position: fixed;
+  background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
+  color: #fff;
+  width: 100vw;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .container {
-    text-align: center;
+  text-align: center;
 }
 
 h1 {
-    color: white;
+  color: white;
 }
 
 .card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    margin: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  margin: auto;
 }
 
 .card h2 {
-    color: #e41d69;
-    margin-bottom: 10px;
+  color: #e41d69;
+  margin-bottom: 10px;
 }
 
 .card p {
-    color: #333;
-    margin-bottom: 20px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .button {
-    background: #e41d69;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease;
+  background: #e41d69;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
 }
 
 .breve {
-    background: #e41d69;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease;
+  background: #e41d69;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
 }
 
 .button:hover {
-    background: #ff6767;
+  background: #ff6767;
 }
 
 .games {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Media Queries */
+@media only screen and (min-width: 300px) and (max-width: 480px) {
+    .logo h1 {
+      font-size: 24px;
+    }
+  
+    .profile-icon img {
+      width: 35px;
+      height: 35px;
+    }
+  
+    .card {
+      width: 70%;
+      padding: 15px;
+    }
+
+    .games {
+        display: grid;
+    }
+  
+    .button, .breve {
+      padding: 8px 15px;
+      font-size: 0.9em;
+    }
+  }
+
+
+/* iPads, tablets (481px - 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .logo h1 {
+    font-size: 24px;
+  }
+
+  .profile-icon img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .card {
+    width: 70%;
+    padding: 15px;
+  }
+
+  .button, .breve {
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+}
+
+/* Telas pequenas, laptops (769px - 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  header {
+    height: 90px;
+  }
+
+  .logo h1 {
+    font-size: 28px;
+  }
+
+  .profile-icon img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .card {
+    width: 60%;
+    padding: 18px;
+  }
+
+  .button, .breve {
+    padding: 9px 18px;
+    font-size: 1em;
+  }
+}
+
+/* Desktops, telas grandes (1025px - 1200px) */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  header {
+    height: 100px;
+  }
+
+  .logo h1 {
+    font-size: 32px;
+  }
+
+  .profile-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card {
+    width: 50%;
+    padding: 20px;
+  }
+
+  .button, .breve {
+    padding: 10px 20px;
+    font-size: 1.1em;
+  }
 }

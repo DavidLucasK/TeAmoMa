@@ -5,14 +5,12 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .quiz-container {
@@ -20,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .card {
@@ -80,7 +78,7 @@ body {
 }
 
 .next-button:hover {
-  background-color: rgb(209, 27, 97);
+  background-color: #d11b61;
 }
 
 .voltar {
@@ -90,4 +88,23 @@ body {
     top: 0;
     text-decoration: none;
     color: #fff;
+}
+
+/* Customização do estilo do SweetAlert2 */
+
+.custom-swal-title {
+  font-size: 1.5rem;
+}
+
+.custom-swal-content {
+  position: fixed;
+  font-size: 1rem;
+}
+
+.custom-swal-confirm-button {
+  background-color: #e41d69; /* Cor do botão */
+}
+
+.custom-swal-confirm-button:hover {
+  background-color: #d11b61; /* Cor do botão */
 }

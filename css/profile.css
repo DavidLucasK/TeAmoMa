@@ -55,33 +55,23 @@ header {
 main {
     position: fixed;
     display: grid;
-    justify-content: center;
     left: 50%;
-    top: 90px;
+    height: 100vh;
     transform: translateX(-50%);
-}
-
-main h1 {
-    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    display: flex; 
-    justify-content: center;
 }
 
 .profile-info {
     background-color: white;
-    display: inline-block;
     align-items: start;
     justify-content: center;
+    position: fixed;
     text-align: center;
-    width: 600px;
-    height: 700px;
-    margin-top: 70px;
+    width: 400px;
+    height: 400px;
     padding: 20px;
-    border-radius: 15px;
+    margin-bottom: 30px;
+    bottom: 0;
+    border-radius: 30px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.178);
 }
 
@@ -94,19 +84,22 @@ main h1 {
     left: 50%;
     transform: translateX(-50%);
     margin-top: -60px;
-    width: 200px;
+    width: 40%;
+    height: 43%;
     border-radius: 50%;
-    height: 210px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.527);
     display: block; /* Remove o espaço em branco abaixo da imagem */
     overflow: hidden;
 }
 
 .profile-info p {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 15px;
 }
+
+.profile-info p:nth-last-child(4) {
+    margin-top: 40px;
+}
+
 
 .voltar p {
     margin-right: 20px;
@@ -147,20 +140,91 @@ main h1 {
     }
 }
 
-@media only screen and (min-width: 200px) and (max-width: 480px) {
+/* Media Queries */
+@media (max-width: 480px) {
     header {
-      background: linear-gradient(90deg, #e41d69, #ff7070, #fe8277, #ff7070, #e41d69) no-repeat;
-      z-index: 10;
-      animation: gradient 10s ease infinite;
-      background-size: 200% 200%;
-      box-shadow: 0 0 10px rgb(0, 0, 0);
+        height: 80px;
     }
-  
-    main {
-      background-color: white;
+    .logo h1 {
+        font-size: 18px;
+        margin-left: 10px;
     }
-  
-    .item {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
+
+    .profile-icon img {
+        width: 30px;
+        height: 30px;
     }
-  }
+    .profile-info {
+        width: 10px;
+    }
+    .profile-info img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 80px;
+    }
+    .logo h1 {
+        font-size: 20px;
+        margin-left: 15px;
+    }
+    .profile-icon img {
+        width: 35px;
+        height: 35px;
+    }
+    .profile-info {
+        width: 80%;
+        height: auto;
+    }
+    .profile-info img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 1024px) {
+    header {
+        height: 90px;
+    }
+    .logo h1 {
+        font-size: 22px;
+        margin-left: 20px;
+    }
+    .profile-icon img {
+        width: 38px;
+        height: 38px;
+    }
+    .profile-info {
+        width: 70%;
+        height: auto;
+    }
+    .profile-info img {
+        width: 190px;
+        height: 190px;
+    }
+}
+
+@media (max-width: 1200px) {
+    header {
+        height: 100px;
+    }
+    .logo h1 {
+        font-size: 24px;
+        margin-left: 25px;
+    }
+    .profile-icon img {
+        width: 40px;
+        height: 40px;
+    }
+    .profile-info {
+        width: 600px;
+        height: auto;
+    }
+    .profile-info img {
+        width: 200px;
+        height: 200px;
+    }
+}

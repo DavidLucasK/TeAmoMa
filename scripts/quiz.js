@@ -57,18 +57,36 @@ function selectOption(index) {
     }
 }
 
-function nextQuestion() {
+async function showAlert() {
+    const result = await Swal.fire({
+        title: "Parabéns gatinha",
+        text: `Você ganhou ${lovePoints} LovePoints!`,
+        confirmButtonText: "❤",
+        customClass: {
+            container: 'custom-swal-container',
+            title: 'custom-swal-title',
+            content: 'custom-swal-content',
+            confirmButton: 'custom-swal-confirm-button'
+        }
+    });
+
+    return result; // Opcional, se precisar do resultado
+}
+
+// Função assíncrona para gerenciar o fluxo de perguntas e navegação
+async function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex >= shuffledQuestions.length) {
-        alert(`Quiz finalizado! Você ganhou ${lovePoints} LovePoints!`);
-        
+        await showAlert(); // Espera o alerta ser fechado
+
         // Adiciona os pontos ao localStorage
         const storedPoints = localStorage.getItem('lovePoints') ? parseInt(localStorage.getItem('lovePoints')) : 0;
         localStorage.setItem('lovePoints', storedPoints + lovePoints);
-        
+
         // Define a flag indicando que o quiz foi completado
         localStorage.setItem('quizCompleted', 'true');
-        
+
+        // Navega para a nova página
         window.location.href = "loja.html";
     } else {
         loadQuestion();
@@ -82,7 +100,7 @@ function checkQuizStatus() {
     const button = document.getElementById('next-button');
     const voltar = document.getElementById('voltar');
     if (quizCompleted === 'true') {
-        question.innerHTML = 'Não há mais perguntas hoje, volte amanhã!';
+        question.innerHTML = 'Você já completou o quiz hoje! Volte amanhã ❤️';
         options.forEach(option => {
             option.style.display = 'none';
         });

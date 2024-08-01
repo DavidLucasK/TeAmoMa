@@ -39,7 +39,7 @@ function obterTextos4(lovePoints) {
         return [
             'Oiieee!',
             'Que bom que você está aqui de novo.',
-            'UAU! Você já tem mais de 1000 LovePoints? Parabéns',
+            'UAU! Você já tem mais de 1000 LovePoints? Parabéns ❤️',
         ];
     } else {
         return [

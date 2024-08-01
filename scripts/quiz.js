@@ -73,15 +73,42 @@ async function showAlert() {
     return result; // Opcional, se precisar do resultado
 }
 
+const backendUrl = 'https://backendlogindl.vercel.app';
+const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qeHlmbWJwemp5cGlkdWt6bHFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjIyNTc5NjIsImV4cCI6MjAzNzgzMzk2Mn0._iRG2YBG6bRkYZG27BRbD-KnrAX1aBHqloTvHGlcNKQ'
+
+// Função para atualizar os pontos no servidor
+async function updatePoints(username, pointsEarned) {
+    try {
+        const response = await fetch(`${backendUrl}/api/auth/update-points`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apiKey': apiKey,
+            },
+            body: JSON.stringify({ username, pointsEarned }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            console.log('Pontos atualizados com sucesso!');
+        } else {
+            console.error('Erro ao atualizar pontos:', data.message);
+        }
+    } catch (error) {
+        console.error('Erro ao enviar a requisição:', error);
+    }
+}
+
 // Função assíncrona para gerenciar o fluxo de perguntas e navegação
 async function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex >= shuffledQuestions.length) {
         await showAlert(); // Espera o alerta ser fechado
 
-        // Adiciona os pontos ao localStorage
-        const storedPoints = localStorage.getItem('lovePoints') ? parseInt(localStorage.getItem('lovePoints')) : 0;
-        localStorage.setItem('lovePoints', storedPoints + lovePoints);
+        // Adiciona os pontos ao servidor
+        const username = 'amor'; // Altere conforme necessário
+        await updatePoints(username, lovePoints);
 
         // Define a flag indicando que o quiz foi completado
         localStorage.setItem('quizCompleted', 'true');

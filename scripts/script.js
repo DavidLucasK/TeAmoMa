@@ -174,34 +174,3 @@ function startTypingEffect() {
 localStorage.setItem('hasVisited', true);
 
 startTypingEffect();
-
-//Função para mudar a foto de perfil
-document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.getElementById('fileInput');
-    const profileImage = document.getElementById('profileImage');
-    const changePhotoButton = document.getElementById('changePhotoButton');
-
-    const savedImage = localStorage.getItem('profileImage');
-    if (savedImage) {
-        profileImage.src = savedImage;
-    }
-
-    changePhotoButton.addEventListener('click', () => {
-        fileInput.click();
-    });
-
-    fileInput.addEventListener('change', () => {
-        const file = fileInput.files[0];
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                const imageDataUrl = e.target.result;
-                profileImage.src = imageDataUrl;
-                localStorage.setItem('profileImage', imageDataUrl);
-            };
-
-            reader.readAsDataURL(file);
-        }
-    });
-});

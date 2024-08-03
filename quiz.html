@@ -12,16 +12,17 @@
         <div class="card">
             <div id="question" class="question"></div>
             <div id="options" class="options">
-                <div id="option" class="option" onclick="selectOption(0)"></div>
-                <div id="option" class="option" onclick="selectOption(1)"></div>
-                <div id="option" class="option" onclick="selectOption(2)"></div>
-                <div id="option" class="option" onclick="selectOption(3)"></div>
+                <div id="option0" class="option" onclick="selectOption(0)"></div>
+                <div id="option1" class="option" onclick="selectOption(1)"></div>
+                <div id="option2" class="option" onclick="selectOption(2)"></div>
+                <div id="option3" class="option" onclick="selectOption(3)"></div>
             </div>
+            <button id="prev-button" class="prev-button" onclick="prevQuestion()">Pergunta Anterior</button>
             <button id="next-button" class="next-button" onclick="nextQuestion()">Próxima Pergunta</button>
         </div>
         <a id="voltar" class="voltar" href="./como.html">Voltar</a>
     </div>
-    <script src="./scripts/quiz.js"></script>
+    <script src="./scripts/quiz2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

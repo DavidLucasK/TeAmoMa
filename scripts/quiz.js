@@ -1,227 +1,157 @@
-const questions = [
-    {
-        question: "Tirando Jesus, qual o personagem que eu mais curto na Bíblia?",
-        options: ["Moisés", "João", "Davi", "Pedro"],
-        correct: 2
-    },
-    {
-        question: "Qual meu email atual?",
-        options: ["davidlucasfr70", "davidlucasfr", "devao_ben10", "davidlucasfr10"],
-        correct: 0
-    },
-    {
-        question: "Qual foi meu curso na faculdade?",
-        options: ["Sistemas de Informação", "Análise e Desenvolvimento de Sistema", "Redes de Computação", "Ciência da Computação"],
-        correct: 3
-    },
-    {
-        question: "Qual minha comida preferida?",
-        options: ["Pizza", "Arroz, carne e batata frita", "Stroggonoff de Carne", "Stroggonoff de Frango"],
-        correct: 3
-    },
-    {
-        question: "Qual o esporte que eu mais gosto de praticar?",
-        options: ["Basquete", "Futebol", "Vôlei", "Natação"],
-        correct: 0
-    }
-];
-
-const questions2 = [
-    {
-        question: "Qual o país que eu mais quero conhecer?",
-        options: ["Canadá", "Itália", "Suiça", "Inglaterra"],
-        correct: 2
-    },
-    {
-        question: "Qual foi meu primeiro email?",
-        options: ["david_ben10", "devao-ben10", "devao_ben10", "david-ben10"],
-        correct: 2
-    },
-    {
-        question: "Qual foi meu primeiro video-game?",
-        options: ["Super Nintendo", "Playstation 2", "Gameboy Color", "Nintendo 64"],
-        correct: 3
-    },
-    {
-        question: "Qual o segundo jogo que eu mais joguei?",
-        options: ["Super Mario 3", "Chrono Trigger", "Super Mario World", "Super Mario 64"],
-        correct: 3
-    },
-    {
-        question: "Qual foi o primeiro livro que eu li inteiro?",
-        options: ["Matéria Escura", "É assim que acaba", "Verity", "A Paciente Silenciosa"],
-        correct: 0
-    }
-];
-
-const questions3 = [
-    {
-        question: "Qual meu jogo preferido?",
-        options: ["Super Mario 64", "Valorant", "Chrono Trigger", "Grand Chase"],
-        correct: 2
-    },
-    {
-        question: "Qual o anime que eu mais gostei de assistir?",
-        options: ["Sword Art Online", "Bleach", "Dragon Ball Z", "One Piece"],
-        correct: 0
-    },
-    {
-        question: "Qual o gênero de música que eu mais gosto?",
-        options: ["Pop", "Rap", "Eletrônica", "Rock"],
-        correct: 3
-    },
-    {
-        question: "Qual o filme que eu mais assisti?",
-        options: ["Interstellar", "Forrest Gump", "Vingadores: Guerra Infinita", "Questão de Tempo"],
-        correct: 3
-    },
-    {
-        question: "Qual a banda que eu mais ouvi?",
-        options: ["Oficina G3", "AC/DC", "Switchfoot", "Queen"],
-        correct: 2
-    }
-];
-
-// Embaralha as perguntas
-const shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-
+// Variáveis globais
+let questions = [];
 let currentQuestionIndex = 0;
-let lovePoints = 0;
+let points = 0;
 
-function loadQuestion() {
-    const currentQuestion = shuffledQuestions[currentQuestionIndex];
-    document.getElementById('question').innerText = currentQuestion.question;
-    const options = document.querySelectorAll('.option');
-    options.forEach((option, index) => {
-        option.innerText = currentQuestion.options[index];
-        option.classList.remove('correct', 'incorrect');
-    });
-}
+// URLs e API Key
+const backendUrl = 'https://backendlogindl.vercel.app/api/auth';
+const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qeHlmbWJwemp5cGlkdWt6bHFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjIyNTc5NjIsImV4cCI6MjAzNzgzMzk2Mn0._iRG2YBG6bRkYZG27BRbD-KnrAX1aBHqloTvHGlcNKQ';
 
-function selectOption(index) {
-    const currentQuestion = shuffledQuestions[currentQuestionIndex];
-    const options = document.querySelectorAll('.option');
-    options.forEach((option, optionIndex) => {
-        if (optionIndex === currentQuestion.correct) {
-            option.classList.add('correct');
-        } else {
-            option.classList.add('incorrect');
-        }
-    });
-    if (index === currentQuestion.correct) {
-        lovePoints += 50;
+// Função para buscar perguntas do endpoint com método GET
+async function fetchQuestions() {
+    try {
+        const response = await fetch(`${backendUrl}/questions`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apiKey': apiKey
+            }
+        });
+
+        if (!response.ok) throw new Error('Falha ao buscar perguntas.');
+
+        questions = await response.json();
+        console.log(questions); // Verifique a estrutura dos dados recebidos
+        checkQuizStatus();
+    } catch (error) {
+        console.error('Erro:', error);
     }
 }
 
-async function showAlert() {
-    const result = await Swal.fire({
-        title: "Parabéns gatinha",
-        text: `Você ganhou ${lovePoints} LovePoints!`,
-        confirmButtonText: "❤",
-        customClass: {
-            container: 'custom-swal-container',
-            title: 'custom-swal-title',
-            content: 'custom-swal-content',
-            confirmButton: 'custom-swal-confirm-button'
-        }
-    });
+// Função para exibir a pergunta atual
+function showQuestion() {
+    if (currentQuestionIndex < questions.length) {
+        const question = questions[currentQuestionIndex];
+        document.getElementById('question').textContent = question.pergunta;
 
-    return result; // Opcional, se precisar do resultado
+        // Resetar opções
+        question.answers.forEach((answer, index) => {
+            const optionDiv = document.getElementById(`option${index}`);
+            if (optionDiv) {
+                optionDiv.innerHTML = answer.resposta;
+                optionDiv.dataset.correct = answer.is_correta ? 'true' : 'false';
+                optionDiv.classList.remove('correct', 'incorrect', 'disabled');
+            }
+        });
+
+        // Mostrar ou esconder o botão de "anterior"
+        const prevButton = document.getElementById('prev-button');
+        if (currentQuestionIndex > 0) {
+            prevButton.style.display = 'inline-block';
+        } else {
+            prevButton.style.display = 'none';
+        }
+
+        // Alterar texto do botão "Próxima Pergunta" para "Finalizar Quiz" na última pergunta
+        const nextButton = document.getElementById('next-button');
+        if (currentQuestionIndex === questions.length - 1) {
+            nextButton.textContent = 'Finalizar Quiz';
+        } else {
+            nextButton.textContent = 'Próxima Pergunta';
+        }
+    } else {
+        // Se todas as perguntas foram respondidas
+        updatePoints();
+    }
 }
 
-const backendUrl = 'https://backendlogindl.vercel.app';
-const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qeHlmbWJwemp5cGlkdWt6bHFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjIyNTc5NjIsImV4cCI6MjAzNzgzMzk2Mn0._iRG2YBG6bRkYZG27BRbD-KnrAX1aBHqloTvHGlcNKQ'
+// Função para selecionar uma opção
+function selectOption(index) {
+    const question = questions[currentQuestionIndex];
+    const selectedOption = document.getElementById(`option${index}`);
+    console.log(selectedOption.dataset.correct);
 
-// Função para atualizar os pontos no servidor
-async function updatePoints(username, pointsEarned) {
+    // Verifica se a opção selecionada é a correta e adiciona pontos
+    if (selectedOption.dataset.correct === 'true') {
+        points += 50; // Adiciona 50 pontos por resposta correta
+    }
+    console.log(points);
+
+    // Marca visualmente todas as opções
+    question.answers.forEach((answer, optionIndex) => {
+        const optionDiv = document.getElementById(`option${optionIndex}`);
+        if (optionDiv) {
+            if (optionDiv.dataset.correct === 'true') {
+                optionDiv.classList.add('correct');
+            } else {
+                optionDiv.classList.add('incorrect');
+            }
+            // Desabilita as opções
+            optionDiv.classList.add('disabled');
+        }
+    });
+}
+
+// Função para ir para a próxima pergunta
+function nextQuestion() {
+    currentQuestionIndex++;
+    showQuestion();
+}
+
+// Função para ir para a pergunta anterior
+function prevQuestion() {
+    currentQuestionIndex--;
+    showQuestion();
+}
+
+// Função para atualizar os pontos no endpoint
+async function updatePoints() {
     try {
-        const response = await fetch(`${backendUrl}/api/auth/update-points`, {
+        const response = await fetch(`${backendUrl}/update-points`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'apiKey': apiKey,
+                'apiKey': apiKey
             },
-            body: JSON.stringify({ username, pointsEarned }),
+            body: JSON.stringify({
+                username: 'amor',
+                pointsEarned: points
+            })
         });
 
-        const data = await response.json();
+        if (!response.ok) throw new Error('Falha ao atualizar pontos.');
 
-        if (response.ok) {
-            console.log('Pontos atualizados com sucesso!');
-        } else {
-            console.error('Erro ao atualizar pontos:', data.message);
-        }
-    } catch (error) {
-        console.error('Erro ao enviar a requisição:', error);
-    }
-}
-
-// Função assíncrona para gerenciar o fluxo de perguntas e navegação
-async function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex >= shuffledQuestions.length) {
-        await showAlert(); // Espera o alerta ser fechado
-
-        // Adiciona os pontos ao servidor
-        const username = 'amor'; // Altere conforme necessário
-        await updatePoints(username, lovePoints);
-
-        // Define a flag indicando que o quiz foi completado
+        Swal.fire('Quiz Concluído!', `Você ganhou ${points} pontos.`, 'success');
         localStorage.setItem('quizCompleted', 'true');
-
-        // Navega para a nova página
-        window.location.href = "loja.html";
-    } else {
-        loadQuestion();
+        window.location.href = 'como.html';
+    } catch (error) {
+        console.error('Erro:', error);
     }
 }
 
-function resetQuizStatus() {
-    const now = new Date();
-    const currentDay = now.toISOString().split('T')[0];
-    const lastCompletedDate = localStorage.getItem('lastCompletedDate');
-    
-    // Verifica se lastCompletedDate existe
-    if (lastCompletedDate) {
-        const lastDate = new Date(lastCompletedDate);
-
-        // Se a data atual for maior que a data do lastCompletedDate
-        if (now > lastDate) {
-            localStorage.setItem('quizCompleted', 'false');
-            localStorage.setItem('lastCompletedDate', currentDay);
-        }
-    } else {
-        // Se lastCompletedDate não existir, inicializa com a data atual
-        localStorage.setItem('lastCompletedDate', currentDay);
-        localStorage.setItem('quizCompleted', 'false');
-    }
-}
-
+// Função para verificar o status do quiz
 function checkQuizStatus() {
-    resetQuizStatus();
-    
     const quizCompleted = localStorage.getItem('quizCompleted');
     const question = document.getElementById('question');
-    const options = document.querySelectorAll('.option');
+    const optionsContainer = document.getElementById('options');
     const button = document.getElementById('next-button');
     const voltar = document.getElementById('voltar');
-    
+
     if (quizCompleted === 'true') {
         question.innerHTML = 'Você já completou o quiz hoje! Volte amanhã ❤️';
-        options.forEach(option => {
-            option.style.display = 'none';
-        });
+        optionsContainer.style.display = 'none';
         button.innerHTML = 'Voltar';
         button.onclick = () => {
             window.location.href = 'como.html';
-        }
+        };
         voltar.style.display = 'none';
     } else {
-        loadQuestion();
+        showQuestion();
     }
 }
 
-// Chame checkQuizStatus ao carregar a página ou quando necessário
-checkQuizStatus();
-
-window.onload = checkQuizStatus;
+// Inicializa o quiz quando a página carrega
+window.onload = async () => {
+    await fetchQuestions();
+    checkQuizStatus();
+};

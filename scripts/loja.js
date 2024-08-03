@@ -96,6 +96,7 @@ async function handleRedemption(button, pointsRequired, rewardId) {
 
 document.querySelectorAll('.redeem-button').forEach(button => {
     button.addEventListener('click', () => {
+        //Trocar pointsRequired depois para vir da função junto com os cards de rewards.
         const pointsRequired = parseInt(button.previousElementSibling.textContent.match(/\d+/)[0], 10);
         const rewardId = button.getAttribute('data-reward-id');
         handleRedemption(button, pointsRequired, rewardId);

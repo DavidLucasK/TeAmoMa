@@ -83,6 +83,22 @@ body {
   background-color: #d11b61;
 }
 
+.prev-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #e41d69;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.prev-button:hover {
+  background-color: #d11b61;
+}
+
 .voltar {
   padding: 10px;
   position: fixed;

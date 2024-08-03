@@ -1,5 +1,33 @@
 const questions = [
     {
+        question: "Qual o país que eu mais quero conhecer?",
+        options: ["Canadá", "Itália", "Suiça", "Inglaterra"],
+        correct: 2
+    },
+    {
+        question: "Qual foi meu primeiro email?",
+        options: ["david_ben10", "devao-ben10", "devao_ben10", "david-ben10"],
+        correct: 2
+    },
+    {
+        question: "Qual foi meu primeiro video-game?",
+        options: ["Super Nintendo", "Playstation 2", "Gameboy Color", "Nintendo 64"],
+        correct: 3
+    },
+    {
+        question: "Qual o segundo jogo que eu mais joguei?",
+        options: ["Super Mario 3", "Chrono Trigger", "Super Mario World", "Super Mario 64"],
+        correct: 3
+    },
+    {
+        question: "Qual foi o primeiro livro que eu li inteiro?",
+        options: ["Matéria Escura", "É assim que acaba", "Verity", "A Paciente Silenciosa"],
+        correct: 0
+    }
+];
+
+const questions2 = [
+    {
         question: "Qual meu jogo preferido?",
         options: ["Super Mario 64", "Valorant", "Chrono Trigger", "Grand Chase"],
         correct: 2
@@ -120,12 +148,36 @@ async function nextQuestion() {
     }
 }
 
+function resetQuizStatus() {
+    const now = new Date();
+    const currentDay = now.toISOString().split('T')[0];
+    const lastCompletedDate = localStorage.getItem('lastCompletedDate');
+    
+    // Verifica se lastCompletedDate existe
+    if (lastCompletedDate) {
+        const lastDate = new Date(lastCompletedDate);
+
+        // Se a data atual for maior que a data do lastCompletedDate
+        if (now > lastDate) {
+            localStorage.setItem('quizCompleted', 'false');
+            localStorage.setItem('lastCompletedDate', currentDay);
+        }
+    } else {
+        // Se lastCompletedDate não existir, inicializa com a data atual
+        localStorage.setItem('lastCompletedDate', currentDay);
+        localStorage.setItem('quizCompleted', 'false');
+    }
+}
+
 function checkQuizStatus() {
+    resetQuizStatus();
+    
     const quizCompleted = localStorage.getItem('quizCompleted');
     const question = document.getElementById('question');
     const options = document.querySelectorAll('.option');
     const button = document.getElementById('next-button');
     const voltar = document.getElementById('voltar');
+    
     if (quizCompleted === 'true') {
         question.innerHTML = 'Você já completou o quiz hoje! Volte amanhã ❤️';
         options.forEach(option => {
@@ -140,5 +192,8 @@ function checkQuizStatus() {
         loadQuestion();
     }
 }
+
+// Chame checkQuizStatus ao carregar a página ou quando necessário
+checkQuizStatus();
 
 window.onload = checkQuizStatus;

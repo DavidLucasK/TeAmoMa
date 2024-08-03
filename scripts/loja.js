@@ -78,18 +78,27 @@ async function handleRedemption(button, pointsRequired, rewardId) {
     if (currentPoints >= pointsRequired) {
         try {
             // Atualizar pontos
-            console.log(pointsRequired);
             await updatePoints('amor', -pointsRequired);
             await insertRedemption('1', rewardId, pointsRequired);
+            console.log("resgate feito com sucesso")
+            Swal.fire({
+                title: "Parabéns gatinha",
+                text: "Resgate feito com sucesso!",
+                confirmButtonColor: "#d11507",
+                confirmButtonText: "❤"
+            });
 
         } catch (error) {
-            alert("Erro ao processar resgate");
-            console.log("erro do catch da api")
             console.error('Erro ao processar resgate:', error);
         }
     } else {
         console.log("erro do if pq tem menos pontos")
-        alert("Você não tem pontos suficientes espertinha kkkk <3");
+        Swal.fire({
+            title: "Oops",
+            text: "Você não tem pontos suficientes espertinha kkk",
+            confirmButtonColor: "#d11507",
+            confirmButtonText: "❤"
+        });
     }
 }
 

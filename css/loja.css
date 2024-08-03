@@ -89,7 +89,8 @@ main {
   background-color: #e41d69;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
+  width: 50%;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
@@ -110,14 +111,31 @@ main {
 }
 
 .item {
+  display: flex;
+  position: relative;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
   background-color: white;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
+  gap: 40px;
 }
 
 .item h3 {
   margin-top: 0;
+}
+
+.left-side img {
+  width: 300px;
+  border-radius: 15px;
+}
+
+.right-side {
+  display: grid;
+  align-items: center;
 }
 
 .profile-icon {
@@ -183,15 +201,37 @@ main {
   }
 
   .item {
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .left-side img {
+    width: 100%;
+    height: auto;
+  }
+
+  .right-side {
+    display: block;
+  }
+
+  .points {
+    font-size: 1.5em;
+    padding: 8px 16px;
+  }
+
+  .redeem-button {
+    width: 80%;
+    font-size: 0.9em;
   }
 
   .profile-icon img {
     width: 30px;
     height: 30px;
-  }
-
-  .points {
-    font-size: 30px;
   }
 }

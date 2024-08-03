@@ -1,5 +1,33 @@
 const questions = [
     {
+        question: "Tirando Jesus, qual o personagem que eu mais curto na Bíblia?",
+        options: ["Moisés", "João", "Davi", "Pedro"],
+        correct: 2
+    },
+    {
+        question: "Qual meu email atual?",
+        options: ["davidlucasfr70", "davidlucasfr", "devao_ben10", "davidlucasfr10"],
+        correct: 0
+    },
+    {
+        question: "Qual foi meu curso na faculdade?",
+        options: ["Sistemas de Informação", "Análise e Desenvolvimento de Sistema", "Redes de Computação", "Ciência da Computação"],
+        correct: 3
+    },
+    {
+        question: "Qual minha comida preferida?",
+        options: ["Pizza", "Arroz, carne e batata frita", "Stroggonoff de Carne", "Stroggonoff de Frango"],
+        correct: 3
+    },
+    {
+        question: "Qual o esporte que eu mais gosto de praticar?",
+        options: ["Basquete", "Futebol", "Vôlei", "Natação"],
+        correct: 0
+    }
+];
+
+const questions2 = [
+    {
         question: "Qual o país que eu mais quero conhecer?",
         options: ["Canadá", "Itália", "Suiça", "Inglaterra"],
         correct: 2
@@ -26,7 +54,7 @@ const questions = [
     }
 ];
 
-const questions2 = [
+const questions3 = [
     {
         question: "Qual meu jogo preferido?",
         options: ["Super Mario 64", "Valorant", "Chrono Trigger", "Grand Chase"],

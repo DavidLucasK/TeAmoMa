@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://backendlogindl.vercel.app;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://backendlogindl.vercel.app; script-src 'self' https://cdn.jsdelivr.net;">
     <title>Te amo Ma</title>
     <link rel="stylesheet" href="./css/loja.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 <body>
@@ -24,7 +26,7 @@
     </header>
     <main>
         <section class="points-section">
-            <h2>Voce tem:</h2>
+            <h2>Você tem:</h2>
             <p class="points">LovePoints</p>
             <a href="./como.html">
                 <p class="how">Como consigo LovePoints?</p>
@@ -36,42 +38,41 @@
                 <h3>Combo de Lanche</h3>
                 <p>Compro um combo de lanchão top pra gente!</p>
                 <p>LovePoints necessários: 1000</p>
-                <button class="redeem-button">Resgatar</button>
+                <button class="redeem-button" data-reward-id="1">Resgatar</button>
             </div>
             <div class="item">
                 <h3>Sessão de Cinema em casa</h3>
                 <p>Eu escolho o filme, faço a pipoca, arrumo tudo pra gente assistir um filme agarradinho.</p>
                 <p>LovePoints necessários: 500</p>
-                <button class="redeem-button">Resgatar</button>
+                <button class="redeem-button" data-reward-id="2">Resgatar</button>
             </div>
             <div class="item">
                 <h3>Massagem nas Costas</h3>
-                <p>Faço a <strong>MELHOR MASSAGEM</strong> nas costas que você ja recebeu. Mãos abençoadas e aveludadas.</p>
+                <p>Faço a <strong>MELHOR MASSAGEM</strong> nas costas que você já recebeu. Mãos abençoadas e aveludadas.</p>
                 <p>LovePoints necessários: 2000</p>
-                <button class="redeem-button">Resgatar</button>
+                <button class="redeem-button" data-reward-id="3">Resgatar</button>
             </div>
             <div class="item">
                 <h3>Noite Especial com Jantar</h3>
                 <p>O nome já diz <strong>TUDO!</strong></p>
                 <p>Vou fazer um jantar pra gente em uma noite <strong>MAIS</strong> que especial aonde você é a estrela!</p>
                 <p>LovePoints necessários: 5000</p>
-                <button class="redeem-button">Resgatar</button>
+                <button class="redeem-button" data-reward-id="4">Resgatar</button>
             </div>
             <div class="item">
-                <h3>Cupom"Não Precisa Lavar a Louça"</h3>
+                <h3>Cupom "Não Precisa Lavar a Louça"</h3>
                 <p>Lavo a louça no seu lugar.</p>
                 <p>LovePoints necessários: 1500</p>
-                <button class="redeem-button">Resgatar</button>
+                <button class="redeem-button" data-reward-id="5">Resgatar</button>
             </div>
             <div class="item">
                 <h3>Presente DIY</h3>
                 <p>Um presente feito a mão por mim mesmo.</p>
                 <p>LovePoints necessários: 5000</p>
-                <button class="redeem-button">Resgatar</button>
+                <button class="redeem-button" data-reward-id="6">Resgatar</button>
             </div>
         </section>
     </main>
     <script type="module" src="./scripts/loja.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

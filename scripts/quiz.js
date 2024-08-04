@@ -2,6 +2,7 @@
 let questions = [];
 let currentQuestionIndex = 0;
 let points = 0;
+let quizStatus = false; // Variável para armazenar o status do quiz
 
 // URLs e API Key
 const backendUrl = 'https://backendlogindl.vercel.app/api/auth';
@@ -22,14 +23,56 @@ async function fetchQuestions() {
 
         questions = await response.json();
         console.log(questions); // Verifique a estrutura dos dados recebidos
+        await fetchQuizStatus(); // Verifique o status do quiz após buscar as perguntas
         checkQuizStatus();
     } catch (error) {
         console.error('Erro:', error);
     }
 }
 
+// Função para buscar o status do quiz
+async function fetchQuizStatus() {
+    try {
+        const response = await fetch(`${backendUrl}/quiz-status`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apiKey': apiKey
+            }
+        });
+
+        if (!response.ok) throw new Error('Falha ao buscar status do quiz.');
+
+        const data = await response.json();
+        quizStatus = data.is_completed; // Armazena o status do quiz na variável
+        console.log('Status do quiz:', quizStatus); // Verifica o status retornado
+    } catch (error) {
+        console.error('Erro:', error);
+        quizStatus = false; // Define como false em caso de erro
+    }
+}
+
+// Função para atualizar o status do quiz
+async function updateQuizStatus() {
+    try {
+        const response = await fetch(`${backendUrl}/update-quiz-status`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apiKey': apiKey
+            }
+        });
+
+        if (!response.ok) throw new Error('Falha ao atualizar status do quiz.');
+
+        console.log('Status do quiz atualizado com sucesso!');
+    } catch (error) {
+        console.error('Erro:', error);
+    }
+}
+
 // Função para exibir a pergunta atual
-function showQuestion() {
+async function showQuestion() {
     if (currentQuestionIndex < questions.length) {
         const question = questions[currentQuestionIndex];
         document.getElementById('question').textContent = question.pergunta;
@@ -61,7 +104,7 @@ function showQuestion() {
         }
     } else {
         // Se todas as perguntas foram respondidas
-        updatePoints();
+        await updatePoints(); // Atualiza os pontos e chama a função para atualizar o status do quiz
     }
 }
 
@@ -122,7 +165,7 @@ async function updatePoints() {
         if (!response.ok) throw new Error('Falha ao atualizar pontos.');
 
         Swal.fire('Quiz Concluído!', `Você ganhou ${points} pontos.`, 'success');
-        localStorage.setItem('quizCompleted', 'true');
+        await updateQuizStatus();
         window.location.href = 'como.html';
     } catch (error) {
         console.error('Erro:', error);
@@ -131,15 +174,16 @@ async function updatePoints() {
 
 // Função para verificar o status do quiz
 function checkQuizStatus() {
-    const quizCompleted = localStorage.getItem('quizCompleted');
     const question = document.getElementById('question');
     const optionsContainer = document.getElementById('options');
     const button = document.getElementById('next-button');
+    const buttonPrev = document.getElementById('prev-button');
     const voltar = document.getElementById('voltar');
 
-    if (quizCompleted === 'true') {
+    if (quizStatus) {
         question.innerHTML = 'Você já completou o quiz hoje! Volte amanhã ❤️';
         optionsContainer.style.display = 'none';
+        buttonPrev.style.display = 'none';
         button.innerHTML = 'Voltar';
         button.onclick = () => {
             window.location.href = 'como.html';
@@ -153,5 +197,4 @@ function checkQuizStatus() {
 // Inicializa o quiz quando a página carrega
 window.onload = async () => {
     await fetchQuestions();
-    checkQuizStatus();
 };

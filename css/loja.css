@@ -139,14 +139,21 @@ main {
 }
 
 .profile-icon {
-  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .profile-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
   filter: invert();
-  opacity: 0.8;
-  transition: 0.3s ease-in-out;
-  opacity: 1;
+}
+
+.profile-icon .profile {
+  margin-right: 20px;
 }
 
 .profile-icon img:hover {

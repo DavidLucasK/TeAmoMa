@@ -16,9 +16,9 @@ function typeWriter(elemento, texto, callback) {
 const parags = document.querySelectorAll('.home .typewriter');
 
 const textos1 = [
-    'Oi gatinha!',
-    'Essa plataforma foi uma idéia que tive.',
-    'Acho que você vai gostar :)',
+    'Oi pessoa anônima!',
+    'Essa plataforma foi uma idéia que tive para minha namorada.',
+    'Espero que goste :)',
 ];
 
 const textos2 = [

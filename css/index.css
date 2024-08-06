@@ -17,15 +17,15 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 6.25rem; /* 100px */
     animation: gradient 10s ease infinite;
-    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277, #ff6767, #e41d69) no-repeat;
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1); /* 10px */
 }
 
 .logo h1 {
     margin: 0;
-    margin-left: 20px;
+    margin-left: 1.25rem; /* 20px */
     color: white;
     transition: 0.3s ease-in-out;
 }
@@ -37,13 +37,13 @@ header {
 .profile-icon {
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 1.25rem; /* 20px */
     gap: 2rem;
 }
 
 .profile-icon img {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
     border-radius: 50%;
     cursor: pointer;
     filter: invert();
@@ -59,18 +59,18 @@ header {
 .home {
     color: #fff;
     width: 100vw;
-    padding-top: 120px; /* Ajuste para garantir que o conteúdo não fique atrás do navbar */
+    padding-top: 7.5rem; /* 120px */
 }
 
 .home p {
-    font-size: 24px;
+    font-size: 1.5rem; /* 24px */
     font-weight: 600;
 }
 
 main {
     height: 100vh;
     text-align: center;
-    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277,#ff6767, #e41d69) no-repeat;
+    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277, #ff6767, #e41d69) no-repeat;
 }
 
 a {
@@ -81,85 +81,85 @@ a {
 .images-home img {
     position: fixed;
     bottom: 0;
-    width: 300px;
+    width: 18.75rem; /* 300px */
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: -10px;
+    margin-bottom: -0.625rem; /* -10px */
     max-width: 100%; /* Adicionado para garantir que a imagem se ajuste ao tamanho da tela */
 }
 
 /* Media Queries */
-@media screen and (min-width: 300px) and (max-width: 480px) {
+@media screen and (min-width: 18.75em) and (max-width: 30em) { /* 300px - 480px */
     .header {
-        height: 100px;
-        box-shadow: 0 0 10px rgb(0, 0, 0);
+        height: 6.25rem; /* 100px */
+        box-shadow: 0 0 0.625rem rgb(0, 0, 0); /* 10px */
     }
     .logo h1 {
-        font-size: 24px;
-        margin-left: 25px;
+        font-size: 1.5rem; /* 24px */
+        margin-left: 1.5625rem; /* 25px */
     }
 
-    .profile-icon{
-        gap: 15px;
+    .profile-icon {
+        gap: 0.9375rem; /* 15px */
     }
 
     .profile-icon img {
-        width: 30px;
-        height: 30px;
+        width: 1.875rem; /* 30px */
+        height: 1.875rem; /* 30px */
     }
 
     .home {
-        padding-top: 100px; /* Ajuste o padding-top para tablets */
+        padding-top: 6.25rem; /* 100px */
     }
 
     .home .textos {
-        padding-top: 20px;
+        padding-top: 1.25rem; /* 20px */
     }
 
     .home p {
-        font-size: 18px;
+        font-size: 1.125rem; /* 18px */
     }
 
     .home .images-home img {
-        width: 250px;
+        width: 15.625rem; /* 250px */
     }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 30.0625em) and (max-width: 48em) { /* 481px - 768px */
     .header {
-        height: 100px;
+        height: 6.25rem; /* 100px */
     }
     .home {
-        padding-top: 100px; /* Ajuste o padding-top para tablets */
+        padding-top: 6.25rem; /* 100px */
     }
 
     .home .images-home img {
-        width: 300px;
+        width: 18.75rem; /* 300px */
     }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 48.0625em) and (max-width: 64em) { /* 769px - 1024px */
     .home {
-        padding-top: 110px; /* Ajuste o padding-top para telas pequenas */
+        padding-top: 6.875rem; /* 110px */
     }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 64.0625em) { /* 1025px */
     .home {
-        padding-top: 120px; /* Ajuste o padding-top para telas maiores */
+        padding-top: 7.5rem; /* 120px */
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 75em) { /* 1200px */
     header {
-        height: 100px;
+        height: 6.25rem; /* 100px */
     }
 
     .logo h1 {
-        font-size: 32px;
-        margin-left: 20px;
+        font-size: 2rem; /* 32px */
+        margin-left: 1.25rem; /* 20px */
     }
     .home p {
-        font-size: 20px;
+        font-size: 1.25rem; /* 20px */
     }
 }

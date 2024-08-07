@@ -88,6 +88,10 @@ async function handleRedemption(button, pointsRequired, rewardId) {
                 text: "Resgate feito com sucesso!",
                 confirmButtonColor: "#d11507",
                 confirmButtonText: "❤"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "loja.html";
+                }
             });
         } catch (error) {
             console.error('Erro ao processar resgate:', error);

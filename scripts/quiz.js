@@ -22,8 +22,8 @@ async function fetchQuestions() {
         if (!response.ok) throw new Error('Falha ao buscar perguntas.');
 
         questions = await response.json();
-        console.log(questions); // Verifique a estrutura dos dados recebidos
-        await fetchQuizStatus(); // Verifique o status do quiz após buscar as perguntas
+        console.log(questions);
+        await fetchQuizStatus();
         checkQuizStatus();
     } catch (error) {
         console.error('Erro:', error);
@@ -44,11 +44,11 @@ async function fetchQuizStatus() {
         if (!response.ok) throw new Error('Falha ao buscar status do quiz.');
 
         const data = await response.json();
-        quizStatus = data.is_completed; // Armazena o status do quiz na variável
-        console.log('Status do quiz:', quizStatus); // Verifica o status retornado
+        quizStatus = data.is_completed;
+        console.log('Status do quiz:', quizStatus);
     } catch (error) {
         console.error('Erro:', error);
-        quizStatus = false; // Define como false em caso de erro
+        quizStatus = false;
     }
 }
 
@@ -87,7 +87,7 @@ async function showQuestion() {
             }
         });
 
-        // Mostrar ou esconder o botão de "anterior"
+        // Mostra botão de pergunta anterior se não for a primeira pergunta
         const prevButton = document.getElementById('prev-button');
         if (currentQuestionIndex > 0) {
             prevButton.style.display = 'inline-block';
@@ -95,7 +95,7 @@ async function showQuestion() {
             prevButton.style.display = 'none';
         }
 
-        // Alterar texto do botão "Próxima Pergunta" para "Finalizar Quiz" na última pergunta
+        // Altera o botão de próxima pergunta para finalizar quiz
         const nextButton = document.getElementById('next-button');
         if (currentQuestionIndex === questions.length - 1) {
             nextButton.textContent = 'Finalizar Quiz';
@@ -103,8 +103,7 @@ async function showQuestion() {
             nextButton.textContent = 'Próxima Pergunta';
         }
     } else {
-        // Se todas as perguntas foram respondidas
-        await updatePoints(); // Atualiza os pontos e chama a função para atualizar o status do quiz
+        await updatePoints();
     }
 }
 
@@ -163,7 +162,6 @@ async function updatePoints() {
         });
 
         if (!response.ok) throw new Error('Falha ao atualizar pontos.');
-
         Swal.fire('Quiz Concluído!', `Você ganhou ${points} pontos.`, 'success');
         await updateQuizStatus();
         window.location.href = 'como.html';

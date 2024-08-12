@@ -81,7 +81,7 @@ a {
 .images-home img {
     position: fixed;
     bottom: 0;
-    width: 18.75rem; /* 300px */
+    width: 25rem; /* 300px */
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: -0.625rem; /* -10px */
@@ -121,7 +121,7 @@ a {
     }
 
     .home .images-home img {
-        width: 15.625rem; /* 250px */
+        width: 20rem; /* 250px */
     }
 }
 
@@ -134,7 +134,7 @@ a {
     }
 
     .home .images-home img {
-        width: 18.75rem; /* 300px */
+        width: 25rem; /* 300px */
     }
 }
 

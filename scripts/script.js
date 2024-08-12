@@ -48,7 +48,7 @@ const textos5 = [
 const textos6 = [
     'Oi meu bem!',
     'Cada detalhe desse site foi pensado em você.',
-    'Você é a razão de tudo isso :)'
+    'Você é a razão de tudo isso ❤'
 ];
 
 const textos7 = [
@@ -72,7 +72,7 @@ const textos9 = [
 const textos10 = [
     'Oi, gatenhaaaa ❤',
     'Me diverti criando essas coisas pra te ver feliz.',
-    'Você merece o melhor, sempre.'
+    'Você merece o melhor, sempre. ❤'
 ];
 
 const textos11 = [
@@ -84,7 +84,15 @@ const textos11 = [
 
 
 function obterTextos4(lovePoints) {
-    if (lovePoints > 1000) {
+    if (lovePoints > 4000) {
+        return [
+            'Oi bebêeee',
+            'OQUE?! Você já tem mais de 4000 LOVEPOINTS?',
+            'PARA DE USAR HACK HEIN, TO DE OLHO 👀'
+        ]
+    }
+
+    else if (lovePoints > 1000) {
         return [
             'Oiieee!',
             'Que bom que você está aqui de novo.',
@@ -235,6 +243,7 @@ function startTypingEffect() {
     
     function typeNextParagraph() {
         if (index < parags.length) {
+            parags[index].style.fontSize = "22pt";
             typeWriter(parags[index], textos[index], () => {
                 index++;
                 typeNextParagraph();

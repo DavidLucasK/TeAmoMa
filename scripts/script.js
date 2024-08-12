@@ -24,7 +24,7 @@ const textos1 = [
 const textos2 = [
     'Oi de novo!',
     'Espero que esteja gostando amor.',
-    'Lembre-se sempre: Eu te amo',
+    'Lembre-se sempre: Eu te amo, tá?',
 ];
 
 const textos3 = [
@@ -32,6 +32,55 @@ const textos3 = [
     'Estou feliz que você esteja usando o site hehe.',
     'Tem alguma sugestão pra loja? Me chama!'
 ];
+
+const textos4 = [
+    'Olá amor da minha vida!',
+    'Tá gostando do site que fiz pra você?',
+    'Me da um beijinho então rs ❤'
+];
+
+const textos5 = [
+    'Oi minha princesa!',
+    'Gostei de criar coisas pra você.',
+    'Espero que esteja se divertindo com o site!'
+];
+
+const textos6 = [
+    'Oi meu bem!',
+    'Cada detalhe desse site foi pensado em você.',
+    'Você é a razão de tudo isso :)'
+];
+
+const textos7 = [
+    'Ei, amorzinho!',
+    'Seu sorriso é o que me inspira.',
+    'Me avisa se quiser algo diferente no site!'
+];
+
+const textos8 = [
+    'Oiiie gatona!',
+    'Estou sempre pensando em novas idéias pra te surpreender.',
+    'Me fala o que você ta achando até agora, blz?'
+];
+
+const textos9 = [
+    'Oi, amor da minha vida!',
+    'Esse site é só mais uma forma de mostrar como te amo.',
+    'Quero que cada visita sua seja especial e que você se divirta!'
+];
+
+const textos10 = [
+    'Oi, gatenhaaaa ❤',
+    'Me diverti criando essas coisas pra te ver feliz.',
+    'Você merece o melhor, sempre.'
+];
+
+const textos11 = [
+    'Oi meu nenééémmm',
+    'Te amo muito tá?',
+    'Me chama no whats, to com saudades de você 😔'
+];
+
 
 
 function obterTextos4(lovePoints) {
@@ -138,7 +187,7 @@ points.innerHTML = `${lovePoints} LovePoints`;
 
 let textos;
 if (hasVisited) {
-    const randomIndex = Math.floor(Math.random() * 4);
+    const randomIndex = Math.floor(Math.random() * 10);
     switch (randomIndex) {
         case 0:
             textos = textos2;
@@ -147,7 +196,31 @@ if (hasVisited) {
             textos = textos3;
             break;
         case 2:
-            textos = obterTextos4(lovePoints); // Chama a função com lovePoints
+            textos = obterTextos4(lovePoints);
+            break;
+        case 3:
+            textos = textos4;
+            break;
+        case 4:
+            textos = textos5;
+            break;
+        case 5:
+            textos = textos6;
+            break;
+        case 6:
+            textos = textos7;
+            break;
+        case 7:
+            textos = textos8;
+            break;
+        case 8:
+            textos = textos9;
+            break;
+        case 9:
+            textos = textos10;
+            break;
+        case 10:
+            textos = textos11;
             break;
         default:
             textos = textos2;
@@ -155,6 +228,7 @@ if (hasVisited) {
 } else {
     textos = textos1;
 }
+
 
 function startTypingEffect() {
     let index = 0;

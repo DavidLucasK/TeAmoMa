@@ -88,13 +88,19 @@ async function handleRedemption(button, pointsRequired, rewardId) {
                 text: "Resgate feito com sucesso!",
                 confirmButtonColor: "#d11507",
                 confirmButtonText: "❤"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "loja.html";
-                }
+            }).then(() => {
+                location.reload(); // Recarrega a página após o sucesso
             });
         } catch (error) {
             console.error('Erro ao processar resgate:', error);
+            Swal.fire({
+                title: "Erro",
+                text: "Algo deu errado durante o resgate. Tente novamente.",
+                confirmButtonColor: "#d11507",
+                confirmButtonText: "❤"
+            }).then(() => {
+                location.reload(); // Recarrega a página após um erro
+            });
         }
     } else {
         console.log("Erro: pontos insuficientes");
@@ -103,6 +109,8 @@ async function handleRedemption(button, pointsRequired, rewardId) {
             text: "Você não tem pontos suficientes espertinha kkk",
             confirmButtonColor: "#d11507",
             confirmButtonText: "❤"
+        }).then(() => {
+            location.reload(); // Recarrega a página após pontos insuficientes
         });
     }
 }
@@ -154,6 +162,9 @@ function displayStoreItems(items) {
     // Adiciona eventos aos botões de resgate
     document.querySelectorAll('.redeem-button').forEach(button => {
         button.addEventListener('click', () => {
+            //Desabilita o botão após o resgate
+            button.disabled = true;
+
             const pointsRequired = parseInt(button.previousElementSibling.textContent.match(/\d+/)[0], 10);
             const rewardId = button.getAttribute('data-reward-id');
             handleRedemption(button, pointsRequired, rewardId);

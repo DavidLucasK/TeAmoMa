@@ -66,11 +66,10 @@ main {
     justify-content: center;
     position: fixed;
     text-align: center;
-    width: 400px;
-    height: 400px;
-    padding: 20px;
-    margin-bottom: 30px;
-    bottom: 0;
+    width: 500px;
+    height: 600px;
+    margin: 15rem 0;
+    margin-bottom: 3rem;
     border-radius: 30px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.178);
 }
@@ -166,6 +165,10 @@ main {
 
     .profile-info p {
         font-size: 14px;
+    }
+
+    .textos{
+        margin-top: 8rem;
     }
 }
 

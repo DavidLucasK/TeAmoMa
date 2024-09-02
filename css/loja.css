@@ -107,21 +107,21 @@ main {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 0 20rem;
 }
 
 .store-section h2 {
-  color: #fff;
+  color: #000;
+  text-align: center;
 }
 
 .item {
   display: flex;
-  position: relative;
-  align-items: center;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 55%;
-  background-color: white;
-  padding: 2rem 2rem;
+  background-color: #FFF;
+  justify-content: center;
+  align-self: center;
+  padding: 3rem 3rem;
+  max-width: fit-content;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.377), rgba(0, 0, 0, 0.39) 0px -2px 6px 0px inset;
   gap: 40px;
@@ -137,18 +137,29 @@ main {
   scale: 1.03;
 }
 
+.item .item-points {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .item h3 {
   margin-top: 0;
 }
 
 .left-side img {
-  width: 300px;
+  width: 100%;
+  max-width: 400px;
   border-radius: 15px;
 }
 
 .right-side {
   display: grid;
   align-items: center;
+}
+
+.right-side p {
+  min-width: 500px;
+  max-width: 500px;
 }
 
 .profile-icon {
@@ -203,55 +214,79 @@ main {
   }
 }
 
-@media only screen and (min-width: 300px) and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   header {
-    background: linear-gradient(90deg, #e41d69, #ff7070, #fe8277, #ff7070, #e41d69) no-repeat;
-    z-index: 10;
+    padding: 10px;
     height: 100px;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.678);
   }
 
   .logo h1 {
-    font-size: 24px;
-    margin-left: 25px;
+    font-size: 20pt !important;
   }
 
-  main {
-    background-color: white;
+  .points-section {
+    margin-top: 8rem !important;
   }
 
-  .item {
-    width: 90%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
-    gap: 15px;
-    padding: 10px;
+  .logo h1 {
+    font-size: 20px;
+    margin-left: 15px;
   }
 
-  .left-side img {
-    width: 100%;
-    height: auto;
-  }
-
-  .right-side {
-    display: block;
-  }
-
-  .points {
-    font-size: 1.5em;
-    padding: 8px 16px;
-  }
-
-  .redeem-button {
-    width: 80%;
-    font-size: 0.9em;
+  .profile-icon {
+    gap: 1rem;
   }
 
   .profile-icon img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .points-section {
+    margin-top: 80px;
+    margin-bottom: 15px;
+  }
+
+  .points {
+    font-size: 1.8em;
+    padding: 8px 15px;
+  }
+
+  .how {
+    font-size: 16px;
+  }
+
+  .store-section {
+    color: #000;
+    padding: 0 10px;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    gap: 2rem;
+  }
+
+  .item h3 {
+    font-size: 1.2em;
+  }
+
+  .left-side img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .right-side p {
+    min-width: auto;
+    max-width: 100%;
+  }
+
+  .redeem-button {
+    width: 100%;
+    font-size: 0.9em;
+    padding: 10px;
   }
 }

@@ -290,3 +290,54 @@ main {
     padding: 10px;
   }
 }
+
+@media only screen and (min-width: 1025px) and (max-width: 1520px) {
+  header {
+    background: linear-gradient(90deg, #e41d69, #ff7070, #fe8277, #ff7070, #e41d69) no-repeat;
+    z-index: 10;
+    height: 100px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+  }
+
+  .logo h1 {
+    font-size: 24px;
+    margin-left: 25px;
+  }
+
+  main {
+    background-color: white;
+  }
+
+  .item {
+    height: auto;
+    align-items: center;
+    flex-direction: row;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
+    gap: 3rem;
+  }
+
+  .left-side img {
+    width: 100%;
+    min-width: 350px;
+    height: auto;
+  }
+
+  .right-side {
+    display: block;
+  }
+
+  .points {
+    font-size: 1.5em;
+    padding: 8px 16px;
+  }
+
+  .redeem-button {
+    width: 80%;
+    font-size: 0.9em;
+  }
+
+  .profile-icon img {
+    width: 30px;
+    height: 30px;
+  }
+}

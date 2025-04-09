@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6.25rem; /* 100px */
+    animation: gradient 10s ease infinite;
+    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277, #ff6767, #e41d69) no-repeat;
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1); /* 10px */
+}
+
+.logo h1 {
+    margin: 0;
+    margin-left: 1.25rem; /* 20px */
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+.logo h1:hover {
+    opacity: 0.8;
+}
+
+.profile-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 1.25rem; /* 20px */
+    gap: 2rem;
+}
+
+.profile-icon img {
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
+    border-radius: 50%;
+    cursor: pointer;
+    filter: invert();
+    opacity: 0.8;
+    transition: 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.profile-icon img:hover {
+    opacity: 0.8;
+}
+
+.home {
+    color: #fff;
+    width: 100vw;
+    padding-top: 7.5rem; /* 120px */
+}
+
+.home p {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+}
+
+main {
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(90deg, #e41d69, #ff6767, #fe8277, #ff6767, #e41d69) no-repeat;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.images-home img {
+    position: fixed;
+    bottom: 0;
+    width: 25rem; /* 300px */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: -0.625rem; /* -10px */
+    max-width: 100%; /* Adicionado para garantir que a imagem se ajuste ao tamanho da tela */
+}
+
+/* Media Queries */
+@media screen and (min-width: 18.75em) and (max-width: 30em) { /* 300px - 480px */
+    .header {
+        height: 6.25rem; /* 100px */
+        box-shadow: 0 0 0.625rem rgb(0, 0, 0); /* 10px */
+    }
+    .logo h1 {
+        font-size: 1.5rem; /* 24px */
+        margin-left: 1.5625rem; /* 25px */
+    }
+
+    .profile-icon {
+        gap: 0.9375rem; /* 15px */
+    }
+
+    .profile-icon img {
+        width: 1.875rem; /* 30px */
+        height: 1.875rem; /* 30px */
+    }
+
+    .home {
+        padding-top: 6.25rem; /* 100px */
+    }
+
+    .home .textos {
+        padding-top: 1.25rem; /* 20px */
+    }
+
+    .home p {
+        font-size: 1.125rem; /* 18px */
+    }
+
+    .home .images-home img {
+        width: 20rem; /* 250px */
+    }
+}
+
+@media (min-width: 30.0625em) and (max-width: 48em) { /* 481px - 768px */
+    .header {
+        height: 6.25rem; /* 100px */
+    }
+    .home {
+        padding-top: 6.25rem; /* 100px */
+    }
+
+    .home .images-home img {
+        width: 25rem; /* 300px */
+    }
+}
+
+@media (min-width: 48.0625em) and (max-width: 64em) { /* 769px - 1024px */
+    .home {
+        padding-top: 6.875rem; /* 110px */
+    }
+}
+
+@media (min-width: 64.0625em) { /* 1025px */
+    .home {
+        padding-top: 7.5rem; /* 120px */
+    }
+}
+
+@media (min-width: 75em) { /* 1200px */
+    header {
+        height: 6.25rem; /* 100px */
+    }
+
+    .logo h1 {
+        font-size: 2rem; /* 32px */
+        margin-left: 1.25rem; /* 20px */
+    }
+    .home p {
+        font-size: 1.25rem; /* 20px */
+    }
+}

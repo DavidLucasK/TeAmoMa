@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        style-src 'self' https://fonts.googleapis.com 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-hx0up+5msNNPOIf047hgFKR59NaAvp5txflkdef6WVE='; 
+        font-src 'self' https://fonts.gstatic.com; 
+        connect-src 'self' https://backendlogindl.vercel.app; 
+        script-src 'self' https://cdn.jsdelivr.net 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE='; 
+        img-src 'self' https://ojxyfmbpzjypidukzlqf.supabase.co;
+    ">
+    <title>Loja</title>
+    <link rel="stylesheet" href="./css/loja.css">
+    <link rel="shortcut icon" href="./assets/heart.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="./index.html">
+                <h1>Te amo Ma</h1>
+            </a>
+        </div>
+        <div class="profile-icon">
+            <a href="como.html">
+                <img src="/assets/game.png" alt="Ícone Minigames">
+            </a>
+            <a class="profile" href="profile.html">
+                <img src="/assets/profile-user.png" alt="Ícone de Perfil">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="points-section">
+            <h2>Você tem:</h2>
+            <p class="points">LovePoints</p>
+            <a href="./como.html">
+                <p class="how">Como consigo LovePoints?</p>
+            </a>
+        </section>
+        <section class="store-section">
+            <h2>Loja de Recompensas</h2>
+            <!-- Os itens serão inseridos dinamicamente pelo JavaScript -->
+            <div class="item">
+                <div class="left-side">
+                    <img src="./assets/loading.gif" alt="Carregando..." class="item-image">
+                </div>
+                <div class="right-side">
+                    <h3 class="item-title">Carregando...</h3>
+                    <p class="item-description">Aguarde, estamos carregando as informações...</p>
+                    <p class="item-points">LovePoints necessários: -</p>
+                    <button class="redeem-button" data-reward-id="">Resgatar</button>
+                </div>
+            </div>
+            <div class="item">
+                <div class="left-side">
+                    <img src="./assets/loading.gif" alt="Carregando..." class="item-image">
+                </div>
+                <div class="right-side">
+                    <h3 class="item-title">Carregando...</h3>
+                    <p class="item-description">Aguarde, estamos carregando as informações...</p>
+                    <p class="item-points">LovePoints necessários: -</p>
+                    <button class="redeem-button" data-reward-id="">Resgatar</button>
+                </div>
+            </div>
+            <div class="item">
+                <div class="left-side">
+                    <img src="./assets/loading.gif" alt="Carregando..." class="item-image">
+                </div>
+                <div class="right-side">
+                    <h3 class="item-title">Carregando...</h3>
+                    <p class="item-description">Aguarde, estamos carregando as informações...</p>
+                    <p class="item-points">LovePoints necessários: -</p>
+                    <button class="redeem-button" data-reward-id="">Resgatar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="./scripts/loja.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

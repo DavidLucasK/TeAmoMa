@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://backendlogindl.vercel.app; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/sweetalert2@11;">
+    <title>LovePoints Quiz</title>
+    <link rel="shortcut icon" href="./assets/heart.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="card">
+            <div id="question" class="question">Carregando Quiz...</div>
+            <div id="options" class="options">
+                <div id="option0" class="option" onclick="selectOption(0)">Carregando...</div>
+                <div id="option1" class="option" onclick="selectOption(1)">Carregando...</div>
+                <div id="option2" class="option" onclick="selectOption(2)">Carregando...</div>
+                <div id="option3" class="option" onclick="selectOption(3)">Carregando...</div>
+            </div>
+            <button id="prev-button" class="prev-button" onclick="prevQuestion()">Pergunta Anterior</button>
+            <button id="next-button" class="next-button" onclick="nextQuestion()">Próxima Pergunta</button>
+        </div>
+        <a id="voltar" class="voltar" href="./como.html">Voltar</a>
+    </div>
+    <script src="./scripts/quiz.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
